@@ -12,7 +12,7 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
   {
      Application->Initialize();
      // Application->Run();
-     Guitestrunner::RunRegisteredTests(); // Tony Add
+     Guitestrunner::RunRegisteredTests(); // TetsRunner
   }
   catch (Exception &exception)
   {
@@ -25,7 +25,7 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
        throw Exception("");
      }
      catch (Exception &exception)
-     {
+     {                                  
        Application->ShowException(&exception);
      }
   }

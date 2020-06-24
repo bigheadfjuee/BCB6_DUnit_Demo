@@ -21,6 +21,7 @@ static void registerTests()
 //---------------------------------------------------------------------------
 void __fastcall TMyTestCase::SetUp()
 {
+  Form1 = new TForm1(NULL);
 }
 //---------------------------------------------------------------------------
 void __fastcall TMyTestCase::TearDown()
@@ -33,7 +34,7 @@ void __fastcall TMyTestCase::TearDown()
 //---------------------------------------------------------------------------
 void __fastcall TMyTestCase::TestClear()
 {
-  Form1 = new TForm1(NULL);
+
   Form1->Clear();
   Check(Form1->GetCount() == 0);
 }

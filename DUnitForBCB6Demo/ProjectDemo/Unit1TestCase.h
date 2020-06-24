@@ -14,7 +14,7 @@ public:
 
   __published :
 
-      void __fastcall TestClear();
+  void __fastcall TestClear();
   void __fastcall TestAdd();
   void __fastcall TestGetCount();
 };

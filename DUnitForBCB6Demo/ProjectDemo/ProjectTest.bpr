@@ -24,8 +24,8 @@
     <USERDEFINES value="_DEBUG"/>
     <SYSDEFINES value="NO_STRICT;_RTLDLL"/>
     <MAINSOURCE value="ProjectTest.cpp"/>
-    <INCLUDEPATH value=".;..;$(BCB)\Projects\Bpl;$(BCB)\Imports;$(BCB)\include;$(BCB)\include\vcl"/>
-    <LIBPATH value=".;\..;$(BCB)\Projects\Lib;$(BCB)\Imports;$(BCB)\lib;$(BCB)\lib\obj"/>
+    <INCLUDEPATH value=".\;..\;$(BCB)\Projects\Bpl;$(BCB)\Imports;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value=".\;\..\;$(BCB)\Projects\Lib;$(BCB)\Imports;$(BCB)\lib;$(BCB)\lib\obj"/>
     <WARNINGS value="-w-par"/>
     <OTHERFILES value=""/>
   </MACROS>

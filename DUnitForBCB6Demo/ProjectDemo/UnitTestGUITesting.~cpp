@@ -1,0 +1,81 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include <TestFramework.hpp>
+#include <TestExtensions.hpp>
+
+#include "UnitTestGUITesting.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TTTestForm *TTestForm;
+//---------------------------------------------------------------------------
+__fastcall TTTestForm::TTTestForm(TComponent* Owner)
+  : TForm(Owner)
+{
+  MyCount = 0;
+}
+//---------------------------------------------------------------------------
+void __fastcall TTTestForm::ResetForm()
+{
+  MyCount = 0;
+  Memo1->Clear();
+}
+//---------------------------------------------------------------------------
+void __fastcall TTTestForm::Button1Click(TObject *Sender)
+{
+  MyCount++;
+  Memo1->Lines->Add(IntToStr(MyCount));
+}
+//---------------------------------------------------------------------------
+static void registerTests()
+{
+  _di_ITestSuite iSuite;
+  TTestSuite *testSuite = new TTestSuite("Testing UnitTestGUITesting.h");
+
+  if (testSuite->GetInterface(__uuidof(ITestSuite), &iSuite))
+  {
+    testSuite->AddTests(__classid(TMyTestCase));
+    Testframework::RegisterTest(iSuite);
+  }
+  else
+  {
+    delete testSuite;
+  }
+}
+//---------------------------------------------------------------------------
+//  T_TGUITestCase
+void __fastcall T_TGUITestCase::SetUp()
+{
+   TTestForm = new TTTestForm(NULL);
+   ActionDelay = 10;
+   TTestForm->Show();
+   Application->ProcessMessages();
+}
+//---------------------------------------------------------------------------
+void __fastcall T_TGUITestCase::TearDown()
+{
+  TTestForm->Release();
+  Application->ProcessMessages();
+}
+//---------------------------------------------------------------------------
+void __fastcall T_TGUITestCase::Test_EnterKey()
+{
+  EnterKey('M');
+}
+//---------------------------------------------------------------------------
+// TGUITestRunnerTests
+void __fastcall TGUITestRunnerTests::SetUp()
+{
+  FRunner = new TGUITestRunner(this);
+  GUI = FRunner;
+}
+//---------------------------------------------------------------------------
+void __fastcall TGUITestRunnerTests::TearDown()
+{
+  GUI = NULL;
+  FRunner->Free();
+}
+//---------------------------------------------------------------------------
